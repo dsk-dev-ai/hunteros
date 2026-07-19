@@ -25,7 +25,7 @@
     "@hunteros/shared": "workspace:*",
     "@hunteros/logger": "workspace:*",
     "@hunteros/ast": "workspace:*",
-    "graphology": "^0.25.4"
+    "graphology": "^0.26.0"
   },
   "devDependencies": {
     "@types/node": "^26.0.0",
