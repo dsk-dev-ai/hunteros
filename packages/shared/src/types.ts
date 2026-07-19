@@ -277,6 +277,74 @@ export enum PluginType {
   Scanner = 'scanner',
 }
 
+export interface ToolRunResult {
+  toolName: string;
+  command: string;
+  exitCode: number;
+  stdout: string;
+  stderr: string;
+  durationMs: number;
+  timestamp: string;
+}
+
+export interface VulnerabilityFinding {
+  id: string;
+  toolName: string;
+  title: string;
+  description: string;
+  severity: Severity;
+  category: FindingCategory;
+  target: string;
+  cve?: string;
+  cvss?: number;
+  evidence: string;
+  remediation: string;
+  references: string[];
+  falsePositive: boolean;
+  triageNotes: string;
+  aiAnalysis?: string;
+}
+
+export interface ScanTarget {
+  type: 'url' | 'host' | 'ip' | 'domain' | 'file' | 'directory' | 'network';
+  value: string;
+  port?: number;
+  protocol?: string;
+}
+
+export interface VulnerabilityReport {
+  id: string;
+  timestamp: string;
+  target: ScanTarget;
+  toolResults: ToolRunResult[];
+  findings: VulnerabilityFinding[];
+  summary: {
+    totalFindings: number;
+    criticalCount: number;
+    highCount: number;
+    mediumCount: number;
+    lowCount: number;
+    infoCount: number;
+    falsePositives: number;
+    confirmedBugs: number;
+    toolsUsed: string[];
+    durationMs: number;
+  };
+  triageSummary: string;
+  aiSummary: string;
+}
+
+export interface TriageResult {
+  findingId: string;
+  isRealBug: boolean;
+  confidence: number;
+  severity: Severity;
+  priority: number;
+  notes: string;
+  escalationPath: string;
+  suggestedAssignee: string;
+}
+
 export interface AIProviderConfig {
   name: string;
   apiKey: string;

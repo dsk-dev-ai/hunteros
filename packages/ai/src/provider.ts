@@ -1,9 +1,13 @@
 import type { AIAnalysisRequest, AIAnalysisResponse, AIProviderConfig } from '@hunteros/shared';
 
+import type { VulnerabilityFinding, TriageResult, VulnerabilityReport } from '@hunteros/shared';
+
 export interface AIProvider {
   name: string;
   analyze(request: AIAnalysisRequest): Promise<AIAnalysisResponse>;
   summarize(context: string): Promise<string>;
+  triageVulnerability(finding: VulnerabilityFinding): Promise<string>;
+  analyzeScanResults(report: VulnerabilityReport): Promise<string>;
 }
 
 export class OpenAIProvider implements AIProvider {
@@ -23,6 +27,62 @@ export class OpenAIProvider implements AIProvider {
     const prompt = `Summarize the following code review context concisely:\n\n${context}`;
     const response = await this.callAI(prompt);
     return response.summary;
+  }
+
+  async triageVulnerability(finding: VulnerabilityFinding): Promise<string> {
+    const prompt = `You are a security vulnerability triage assistant. Analyze the following finding and determine:
+1. Is this a real vulnerability or a false positive?
+2. What is the actual risk level?
+3. What should be the priority for fixing?
+4. Which team should handle this?
+5. Recommended remediation steps.
+
+Finding:
+- Tool: ${finding.toolName}
+- Title: ${finding.title}
+- Description: ${finding.description}
+- Severity: ${finding.severity}
+- Category: ${finding.category}
+- Target: ${finding.target}
+- CVE: ${finding.cve ?? 'N/A'}
+- CVSS: ${finding.cvss?.toString() ?? 'N/A'}
+- Evidence: ${finding.evidence.slice(0, 500)}
+- References: ${finding.references.join(', ')}`;
+    try {
+      const response = await this.callAI(prompt);
+      return response.summary;
+    } catch {
+      return `Triage unavailable for ${finding.title}. Manual review required.`;
+    }
+  }
+
+  async analyzeScanResults(report: VulnerabilityReport): Promise<string> {
+    const prompt = `You are a security report analyzer. Analyze the following vulnerability scan results and provide:
+1. Executive summary of findings
+2. Critical issues that need immediate attention
+3. Patterns or trends in the vulnerabilities
+4. Recommended next steps
+5. Risk assessment for the organization
+
+Scan Summary:
+- Tools Used: ${report.summary.toolsUsed.join(', ')}
+- Total Findings: ${report.summary.totalFindings}
+- Critical: ${report.summary.criticalCount}
+- High: ${report.summary.highCount}
+- Medium: ${report.summary.mediumCount}
+- Low: ${report.summary.lowCount}
+- Confirmed Bugs: ${report.summary.confirmedBugs}
+- False Positives: ${report.summary.falsePositives}
+- Duration: ${report.summary.durationMs}ms
+
+Top Findings:
+${report.findings.slice(0, 10).map((f) => `- [${f.severity}] ${f.title} (${f.toolName}): ${f.description.slice(0, 100)}`).join('\n')}`;
+    try {
+      const response = await this.callAI(prompt);
+      return response.summary;
+    } catch {
+      return 'AI analysis unavailable. Manual review of scan results required.';
+    }
   }
 
   private buildAnalysisPrompt(request: AIAnalysisRequest): string {

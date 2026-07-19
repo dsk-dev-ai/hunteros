@@ -3,6 +3,7 @@ export interface ToolInfo {
   installed: boolean;
   version: string;
   executablePath: string;
+  category?: string;
 }
 
 export interface ToolReport {

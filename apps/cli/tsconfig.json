@@ -18,6 +18,9 @@
     { "path": "../../packages/framework-detectors" },
     { "path": "../../packages/ai" },
     { "path": "../../packages/reports" },
-    { "path": "../../packages/plugins" }
+    { "path": "../../packages/plugins" },
+    { "path": "../../packages/scanner" },
+    { "path": "../../packages/tools" },
+    { "path": "../../packages/environment" }
   ]
 }

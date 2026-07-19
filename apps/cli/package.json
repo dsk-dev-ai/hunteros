@@ -28,6 +28,9 @@
     "@hunteros/ai": "workspace:*",
     "@hunteros/reports": "workspace:*",
     "@hunteros/plugins": "workspace:*",
+    "@hunteros/scanner": "workspace:*",
+    "@hunteros/tools": "workspace:*",
+    "@hunteros/environment": "workspace:*",
     "commander": "^12.1.0"
   },
   "devDependencies": {
