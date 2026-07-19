@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src"],
+  "references": [
+    { "path": "../../packages/shared" },
+    { "path": "../../packages/logger" },
+    { "path": "../../packages/config" },
+    { "path": "../../packages/cache" },
+    { "path": "../../packages/parser" },
+    { "path": "../../packages/ast" },
+    { "path": "../../packages/graph" },
+    { "path": "../../packages/analyzers" },
+    { "path": "../../packages/detectors" },
+    { "path": "../../packages/framework-detectors" },
+    { "path": "../../packages/ai" },
+    { "path": "../../packages/reports" },
+    { "path": "../../packages/plugins" }
+  ]
+}

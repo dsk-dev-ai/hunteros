@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  hunteros:
+    build: .
+    volumes:
+      - ./:/workspace
+      - hunteros-cache:/root/.hunteros
+    entrypoint: ['node', '/app/apps/cli/dist/index.js']
+volumes:
+  hunteros-cache:

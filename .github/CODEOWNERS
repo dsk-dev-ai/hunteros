@@ -1,0 +1,27 @@
+# Global owners
+* @hunteros/maintainers
+
+# Core packages
+/packages/shared/ @hunteros/core-team
+/packages/core/ @hunteros/core-team
+/packages/parser/ @hunteros/core-team
+/packages/ast/ @hunteros/core-team
+/packages/graph/ @hunteros/core-team
+
+# Analysis
+/packages/analyzers/ @hunteros/security-team
+/packages/detectors/ @hunteros/security-team
+/packages/framework-detectors/ @hunteros/security-team
+/rules/ @hunteros/security-team
+
+# AI
+/packages/ai/ @hunteros/ai-team
+
+# Apps
+/apps/cli/ @hunteros/core-team
+/apps/dashboard/ @hunteros/frontend-team
+/apps/api/ @hunteros/backend-team
+
+# CI/CD
+/.github/ @hunteros/infra-team
+/docker/ @hunteros/infra-team

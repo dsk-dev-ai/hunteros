@@ -1,0 +1,37 @@
+{
+  "name": "@hunteros/cli",
+  "version": "0.1.0",
+  "private": true,
+  "description": "HunterOS CLI",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "hunteros": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hunteros/shared": "workspace:*",
+    "@hunteros/logger": "workspace:*",
+    "@hunteros/config": "workspace:*",
+    "@hunteros/cache": "workspace:*",
+    "@hunteros/parser": "workspace:*",
+    "@hunteros/ast": "workspace:*",
+    "@hunteros/graph": "workspace:*",
+    "@hunteros/analyzers": "workspace:*",
+    "@hunteros/detectors": "workspace:*",
+    "@hunteros/framework-detectors": "workspace:*",
+    "@hunteros/ai": "workspace:*",
+    "@hunteros/reports": "workspace:*",
+    "@hunteros/plugins": "workspace:*",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
