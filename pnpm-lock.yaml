@@ -229,7 +229,64 @@ importers:
         specifier: ^2.1.0
         version: 2.1.9(@types/node@22.20.1)
 
+  packages/config-audit:
+    dependencies:
+      '@hunteros/logger':
+        specifier: workspace:*
+        version: link:../logger
+      '@hunteros/shared':
+        specifier: workspace:*
+        version: link:../shared
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.20.1
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.0
+        version: 2.1.9(@types/node@22.20.1)
+
+  packages/dependency-audit:
+    dependencies:
+      '@hunteros/logger':
+        specifier: workspace:*
+        version: link:../logger
+      '@hunteros/shared':
+        specifier: workspace:*
+        version: link:../shared
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.20.1
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.0
+        version: 2.1.9(@types/node@22.20.1)
+
   packages/detectors:
+    dependencies:
+      '@hunteros/logger':
+        specifier: workspace:*
+        version: link:../logger
+      '@hunteros/shared':
+        specifier: workspace:*
+        version: link:../shared
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.20.1
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.0
+        version: 2.1.9(@types/node@22.20.1)
+
+  packages/environment:
     dependencies:
       '@hunteros/logger':
         specifier: workspace:*
@@ -371,6 +428,34 @@ importers:
         specifier: ^2.1.0
         version: 2.1.9(@types/node@22.20.1)
 
+  packages/repository:
+    dependencies:
+      '@hunteros/framework-detectors':
+        specifier: workspace:*
+        version: link:../framework-detectors
+      '@hunteros/logger':
+        specifier: workspace:*
+        version: link:../logger
+      '@hunteros/parser':
+        specifier: workspace:*
+        version: link:../parser
+      '@hunteros/shared':
+        specifier: workspace:*
+        version: link:../shared
+      ignore:
+        specifier: ^6.0.2
+        version: 6.0.2
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.20.1
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.0
+        version: 2.1.9(@types/node@22.20.1)
+
   packages/shared:
     devDependencies:
       '@types/node':
@@ -379,6 +464,25 @@ importers:
       typescript:
         specifier: ^5.6.0
         version: 5.9.3
+
+  packages/tools:
+    dependencies:
+      '@hunteros/logger':
+        specifier: workspace:*
+        version: link:../logger
+      '@hunteros/shared':
+        specifier: workspace:*
+        version: link:../shared
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.20.1
+      typescript:
+        specifier: ^5.6.0
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.0
+        version: 2.1.9(@types/node@22.20.1)
 
 packages:
 

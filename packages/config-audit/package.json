@@ -1,0 +1,29 @@
+{
+  "name": "@hunteros/config-audit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Configuration audit for HunterOS — Docker, CI/CD, K8s, nginx, Apache, env files, package.json, lockfiles",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "default": "./dist/index.js" }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hunteros/shared": "workspace:*",
+    "@hunteros/logger": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

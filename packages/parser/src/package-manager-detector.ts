@@ -13,6 +13,8 @@ export function detectPackageManager(rootPath: string): PackageManager {
 export interface PackageJsonInfo {
   name?: string;
   version?: string;
+  description?: string;
+  packageManager?: string;
   dependencies: Record<string, string>;
   devDependencies: Record<string, string>;
   scripts: Record<string, string>;
@@ -27,6 +29,8 @@ export function readPackageJson(rootPath: string): PackageJsonInfo | null {
     return {
       name: pkg.name,
       version: pkg.version,
+      description: pkg.description,
+      packageManager: pkg.packageManager ?? detectPackageManager(rootPath),
       dependencies: pkg.dependencies ?? {},
       devDependencies: pkg.devDependencies ?? {},
       scripts: pkg.scripts ?? {},
