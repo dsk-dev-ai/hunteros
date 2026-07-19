@@ -28,7 +28,7 @@
     "@hunteros/ai": "workspace:*",
     "@hunteros/reports": "workspace:*",
     "@hunteros/plugins": "workspace:*",
-    "commander": "^12.1.0"
+    "commander": "^15.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
