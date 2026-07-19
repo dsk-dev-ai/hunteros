@@ -24,7 +24,7 @@
   "dependencies": {
     "@hunteros/shared": "workspace:*",
     "@hunteros/logger": "workspace:*",
-    "ignore": "^6.0.2"
+    "ignore": "^7.0.6"
   },
   "devDependencies": {
     "@types/node": "^26.0.0",
