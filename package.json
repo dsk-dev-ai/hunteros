@@ -11,7 +11,7 @@
     "dev": "turbo run dev",
     "test": "turbo run test",
     "lint": "biome check .",
-    "lint:fix": "biome check --apply .",
+    "lint:fix": "biome check --write .",
     "format": "biome format --write .",
     "typecheck": "turbo run typecheck",
     "clean": "turbo run clean",

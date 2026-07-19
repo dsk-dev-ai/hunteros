@@ -24,8 +24,12 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
-      "trailingComma": "all",
+      "trailingCommas": "all",
       "semicolons": "always"
     }
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "ignore": [".turbo", ".next", "out", "dist", "node_modules"]
   }
 }
