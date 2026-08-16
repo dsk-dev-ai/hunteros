@@ -17,7 +17,7 @@ jobs:
       - run: pnpm install
       - run: pnpm build
       - name: Create Release PR or Publish
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
           version: pnpm version
           publish: pnpm release
