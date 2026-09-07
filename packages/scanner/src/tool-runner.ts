@@ -1,4 +1,4 @@
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { createLogger } from '@hunteros/logger';
 import type { Logger } from '@hunteros/logger';
 import type { ToolRunResult } from '@hunteros/shared';
@@ -10,14 +10,16 @@ export class ToolRunner {
     this.logger = logger ?? createLogger({}, 'tool-runner');
   }
 
-  run(toolName: string, command: string, timeout = 120000): ToolRunResult {
-    this.logger.info(`Running tool: ${toolName} — ${command}`);
+  run(toolName: string, args: readonly string[], timeout = 120000): ToolRunResult {
+    const command = `${toolName} ${args.join(' ')}`;
+    this.logger.info(`Running tool: ${command}`);
     const start = Date.now();
     try {
-      const stdout = execSync(command, {
+      const stdout = execFileSync(toolName, args, {
         encoding: 'utf-8',
         timeout,
         maxBuffer: 50 * 1024 * 1024,
+        stdio: ['ignore', 'pipe', 'ignore'],
       });
       const durationMs = Date.now() - start;
       return {
@@ -44,7 +46,11 @@ export class ToolRunner {
     }
   }
 
-  async runAsync(toolName: string, command: string, timeout = 120000): Promise<ToolRunResult> {
-    return this.run(toolName, command, timeout);
+  async runAsync(
+    toolName: string,
+    args: readonly string[],
+    timeout = 120000,
+  ): Promise<ToolRunResult> {
+    return this.run(toolName, args, timeout);
   }
 }

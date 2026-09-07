@@ -9,3 +9,8 @@ export interface ScanProfile {
 }
 
 export type ScanPhase = 'discovery' | 'recon' | 'scanning' | 'enumeration' | 'exploitation' | 'post-exploitation' | 'reporting';
+
+export interface ToolCommand {
+  toolName: string;
+  args: string[];
+}
